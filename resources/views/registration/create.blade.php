@@ -1,6 +1,11 @@
 @extends('layouts.default')
 
 @section('content')
+
+@include('layouts.partials.errors')
+
+<div class="row">
+<div class="col-md-6">
 <h1> Register! </h1>
 
 	{!! Form::open(['route' => 'register_path']) !!}
@@ -30,4 +35,6 @@
 </div>
 
 	{!! Form::close() !!}
+</div>
+</div>
 @stop
