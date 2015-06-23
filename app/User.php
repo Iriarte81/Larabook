@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['username', 'email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -32,4 +32,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+     /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param $name
+     * @param $email
+     * @param $password
+     *
+     * @return User
+     */
+    public static function register($username, $email, $password)
+    {
+        return new static(compact('username', 'email', 'password'));
+    }
+
 }
