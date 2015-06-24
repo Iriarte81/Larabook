@@ -33,6 +33,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
+
+
+    // Password must always be hashed
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+
      /**
      * Create a new user instance after a valid registration.
      *
@@ -45,6 +55,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public static function register($username, $email, $password)
     {
         return new static(compact('username', 'email', 'password'));
+        
+
     }
 
 }

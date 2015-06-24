@@ -35,8 +35,11 @@ class RegisterUserJob extends Job implements SelfHandling
     public function handle(UserRepository $repository)
     {
         $user = User::register($this->username, $this->email, $this->password);
+        
         $repository->save($user);
+        
         event(new \App\Events\UserRegistered($user));
+        
         return $user;
     }
 }

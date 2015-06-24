@@ -16,6 +16,8 @@ use App\Http\Requests;
 
 class RegistrationController extends Controller
 {
+
+
     // show a form to register the user
 
     public function create()
@@ -38,6 +40,8 @@ class RegistrationController extends Controller
 
         // $user = User::create(Input::only('username', 'email', 'password'));
         Auth::login($user);
+
+        flash()->overlay('Glad to have you as a new Larabook member');
 
         return Redirect::home();
     }
