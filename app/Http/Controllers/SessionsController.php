@@ -37,7 +37,7 @@ class SessionsController extends Controller
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
             flash()->success('Welcome Back!');
-            return redirect()->intended(route('statuses'));
+            return redirect()->intended(route('statuses_path'));
         }
         flash()->error('Invalid Credentials');
         return redirect()->route('login_path');

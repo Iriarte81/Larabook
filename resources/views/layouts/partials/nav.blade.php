@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Larabook</a>
+      {!! link_to_route('home', 'Larabook', [], ['class' => 'navbar-brand']) !!}
     </div>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
@@ -30,7 +30,8 @@
           </ul>
         </li>
         @else
-          <li><a href="/login">Login</a></li>
+          <li>{!! link_to_route('register_path', 'Register') !!}</li>
+          <li>{!! link_to_route('login_path', 'Login') !!}</li>
         @endif
       </ul>
 </div>

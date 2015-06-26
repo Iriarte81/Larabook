@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PublishStatusRequest;
+use App\Jobs\PublishStatusJob;
+use App\Statuses\StatusRepository;
 use View;
 
 class StatusesController extends Controller
@@ -21,9 +23,12 @@ public function __construct() {
      *
      * @return Response
      */
-    public function index()
+    public function index(StatusRepository $repository)
     {
-        return View::make('statuses.index');
+
+        $statuses = $repository->getAllForUser(Auth::user());
+
+        return view('statuses.index', compact('statuses'));
     }
 
     /**
@@ -41,9 +46,13 @@ public function __construct() {
      *
      * @return Response
      */
-    public function store()
+    public function store(PublishStatusRequest $request)
     {
-        //
+        $this->dispatch(new PublishStatusJob($request->get('body'), Auth::user()->id));
+
+        flash()->message('Your status has been updated');
+
+        return redirect()->refresh();
     }
 
     /**

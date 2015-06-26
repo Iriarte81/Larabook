@@ -59,4 +59,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     }
 
+    public function statuses()
+    {
+        return $this->hasMany('App\Statuses\Status');
+    }
+
 }
