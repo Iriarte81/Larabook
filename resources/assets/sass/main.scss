@@ -3,3 +3,11 @@ body { padding-top: 70px;}
 .container h1:first-of-type {
 	margin-top: 0;
 }
+
+.nav-gravatar {
+	float:left;
+	postion: relative;
+	top: -6px;
+	left: -8px;
+	border: 1px solid #555;
+}

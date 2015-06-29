@@ -3,6 +3,7 @@
 namespace App\Statuses;
 
 use App\User;
+use App\Statuses\Status;
 
 class StatusRepository {
 
