@@ -32,6 +32,6 @@ gulp.task('watch', function() {
 // gulp watch
 gulp.task('default', ['watch']);
 
-/*elixir(function(mix) {
+elixir(function(mix) {
     mix.sass('main.scss');
-});*/
+});
