@@ -13,9 +13,17 @@
 
 $factory->define(App\User::class, function ($faker) {
     return [
-        'name' => $faker->name,
+        'username' => $faker->name,
         'email' => $faker->email,
-        'password' => str_random(10),
-        'remember_token' => str_random(10),
+        'password' => 'secret',
+        'remember_token' => str_random(10)
     ];
 });
+
+
+$factory->define(App\Statuses\Status::class, function($faker) {
+	return [
+		'body' => $faker->sentence,
+		'user_id' => App\User::all()->random()->id,
+		];
+	});
