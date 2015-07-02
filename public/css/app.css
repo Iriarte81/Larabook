@@ -34,4 +34,12 @@ body {
   padding: 1em;
   margin-bottom: 2em; }
 
+.user-block {
+  text-align: center; }
+  .user-block .avatar {
+    margin: auto; }
+
+.users {
+  margin-bottom: 3em; }
+
 /*# sourceMappingURL=app.css.map */
