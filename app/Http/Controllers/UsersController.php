@@ -32,5 +32,12 @@ class UsersController extends Controller
 
     }
 
+    public function show($username)
+    {
+        $user = $this->userRepository->findByUsername($username);
+
+        return View::make('users.show')->withUser($user);
+    }
+
 
 }

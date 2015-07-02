@@ -74,4 +74,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('App\Statuses\Status');
     }
 
-}
+    /*
+     * Determine is the given user is the same
+     * as the current one
+     * @param User $user
+     * @return boolean
+     *
+     */
+
+    public function is(User $user) {
+
+        return $this->username == $user->username;
+
+    }}

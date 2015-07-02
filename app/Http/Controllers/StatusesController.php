@@ -52,7 +52,7 @@ public function __construct() {
 
         flash()->message('Your status has been updated');
 
-        return redirect()->refresh();
+        return redirect()->back();
     }
 
     /**
