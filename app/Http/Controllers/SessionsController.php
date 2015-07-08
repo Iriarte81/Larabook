@@ -39,8 +39,8 @@ class SessionsController extends Controller
             flash()->success('Welcome Back!');
             return redirect()->intended(route('statuses_path'));
         }
-        flash()->error('Invalid Credentials');
-        return redirect()->route('login_path');
+        flash()->error('Invalid Credentials. We were unable to sign you in. Please check your credentials and try again!');
+        return redirect()->route('login_path')->withInput();
 
     }
 

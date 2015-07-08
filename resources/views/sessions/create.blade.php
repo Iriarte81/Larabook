@@ -1,6 +1,10 @@
 @extends('layouts.default')
 
 @section('content')
+<div class="row">
+<div class="col-md-6">
+
+
 	<h1>Sign In!</h1>
 
 	{!! Form::open(['route' =>'login_path']) !!}
@@ -20,4 +24,8 @@
 	</div>
 
 	{!! Form::close() !!}
+
+</div>
+</div>
+
 @stop

@@ -82,7 +82,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      */
 
-    public function is(User $user) {
+    public function is($user) {
+
+        if (is_null($user)) return false;
 
         return $this->username == $user->username;
 
