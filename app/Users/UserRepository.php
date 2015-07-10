@@ -1,8 +1,8 @@
 <?php
 namespace App\Users;
 
-use App\User;
 use DB;
+use App\User;
 
 class UserRepository
 {
@@ -40,7 +40,24 @@ class UserRepository
             $query->latest();
         }])->whereUsername($username)->first();
     }
-}
 
+    /*
+     * Find a user by their id
+     * @param $id
+     * @return
+     */
+    public function findById($id)
+    {
+        return User::findOrFail($id);
+    }
+
+    /* Follow a Larabook user
+    */
+
+    public function follow($userIdToFollow, User $user) {
+       return $user->follows()->attach($userIdToFollow);
+    }
+
+}
 
 ?>

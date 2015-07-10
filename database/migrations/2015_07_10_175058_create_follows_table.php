@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateFollowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('username:string:unique, email:string:unique, password:string(60)', function (Blueprint $table) {
+        Schema::create('follows', function(Blueprint $table) {
+
             $table->increments('id');
+            $table->integer('follower_id')->index();
+            $table->integer('followed_id')->index();
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('username:string:unique, email:string:unique, password:string(60)');
+        Schema::drop('follows');
     }
 }

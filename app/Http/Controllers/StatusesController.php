@@ -26,7 +26,7 @@ public function __construct() {
     public function index(StatusRepository $repository)
     {
 
-        $statuses = $repository->getAllForUser(Auth::user());
+        $statuses = $repository->getFeedforUser(Auth::user());
 
         return view('statuses.index', compact('statuses'));
     }
