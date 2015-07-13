@@ -89,13 +89,26 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->username == $user->username;
 
     }
+    /*
+     * Get this list of users that the current user follows
+     */
 
-
-    public function follows()
+    public function followedUsers()
 
     {
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followed_id' )
                     ->withTimestamps();
+    }
+
+    /*
+     * Get the list of users who follow the current user
+     */
+
+    public function followers()
+
+    {
+        return $this->belongsToMany('App\User', 'follows', 'followed_id', 'follower_id' )
+            ->withTimestamps();
     }
 
     /*
@@ -104,9 +117,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function isFollowedBy(User $otherUser)
     {
-        $idsWhoOtherUserFollows = $otherUser->follows()->lists('followed_id')->all();
+        $idsWhoOtherUserFollows = $otherUser->followedUsers()->lists('followed_id')->all();
 
         return in_array($this->id, $idsWhoOtherUserFollows);
     }
+
+
 
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Jobs\FollowUserJob;
+use App\Jobs\UnfollowUserJob;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Redirect;
 
@@ -34,8 +35,11 @@ class FollowsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($UserIdToUnfollow)
     {
-        //
+        $userId = array_add(Input::get(), 'userId', Auth::id());
+        $this->dispatch(new UnfollowUserJob($userId));
+        Flash::success('You have now unfollowed this user.');
+        return Redirect::back();
     }
 }

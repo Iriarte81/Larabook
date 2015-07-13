@@ -20,4 +20,24 @@ class UserPresenter extends Presenter
 
 		return "//www.gravatar.com/avatar/{email}?s={$size}";
 	}
+
+    public function followerCount()
+    {
+        $count = $this->entity->followers()->count();
+        $noun = str_plural('Follower', $count);
+
+        return "{$count} {$noun}";
+
+    }
+
+    public function statusCount()
+    {
+        $count = $this->entity->statuses()->count();
+        $noun = str_plural('Status', $count);
+
+        return "{$count} {$noun}";
+
+    }
+
+
 }
