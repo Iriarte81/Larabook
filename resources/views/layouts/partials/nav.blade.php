@@ -18,11 +18,13 @@
       <ul class="nav navbar-nav navbar-right">
         @if($currentUser)
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <img class="nav-gravatar" src="{{ $currentUser->present()->gravatar() }}" alt="{{ $currentUser->name }}" /> 
-          {{ $currentUser->name}} <span class="caret"></span>
+
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <img class="nav-gravatar" src="{{ $currentUser->present()->gravatar() }}" alt="{{ $currentUser->username }}" >
+          {{ $currentUser->username}} <span class="caret"></span>
           </a>
-          <ul class="dropdown-menu">
+
+          <ul class="dropdown-menu" role="menu">
             <li>{!! link_to_route('profile_path', 'Your Profile', $currentUser->username) !!}</li>
             <li role="separator" class="divider"></li>
             <li> {!! link_to_route('logout_path', 'Log Out') !!}</li>

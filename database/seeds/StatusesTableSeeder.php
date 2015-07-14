@@ -7,7 +7,7 @@ class StatusesTableSeeder extends Seeder
 {
     public function run()
     {
-		factory('App\Statuses\Status', 50)->create(); 
+		factory('App\Statuses\Status', 500)->create();
         // TestDummy::times(20)->create('App\Post');
     }
 }

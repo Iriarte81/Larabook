@@ -25,5 +25,6 @@ $factory->define(App\Statuses\Status::class, function($faker) {
 	return [
 		'body' => $faker->sentence,
 		'user_id' => App\User::all()->random()->id,
+        'created_at' => $faker->dateTime()
 		];
 	});

@@ -8,6 +8,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Laracasts\Presenter\PresentableTrait;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -71,7 +72,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function statuses()
     {
-        return $this->hasMany('App\Statuses\Status');
+        return $this->hasMany('App\Statuses\Status')->latest();
     }
 
     /*
@@ -121,7 +122,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return in_array($this->id, $idsWhoOtherUserFollows);
     }
-
-
 
 }

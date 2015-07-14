@@ -1,3 +1,4 @@
+@if ($currentUser)
 @if ($user->isFollowedBy($currentUser))
     <p>You are following {{ $user->username }}</p>
     {!! Form::open(['method' => 'DELETE', 'route' => ['follow_path', $user->id]]) !!}
@@ -13,4 +14,5 @@
     <button type="submit" class="btn btn-primary">Follow {{ $user->username }}</button>
 
 {!! Form::close() !!}
+@endif
 @endif
