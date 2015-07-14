@@ -13,6 +13,8 @@ use App\User;
 use Auth;
 use App\Jobs\RegisterUserJob;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Event;
+use App\Events\UserRegistered;
 
 class RegistrationController extends Controller
 {
@@ -40,6 +42,9 @@ class RegistrationController extends Controller
 
         // $user = User::create(Input::only('username', 'email', 'password'));
         Auth::login($user);
+
+        $user = Auth::user();
+        Event::fire(new UserRegistered($user));
 
         flash()->overlay('Glad to have you as a new Larabook member');
 
