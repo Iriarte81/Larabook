@@ -59,3 +59,14 @@ Route::post('follows', [
 Route::delete('follows/{id}', [
     'as' => 'follow_path',
     'uses' => 'FollowsController@destroy']);
+
+// Password reset link request routes...
+Route::get('password/email', [
+        'as' => 'passwordreset',
+        'uses' => 'Auth\PasswordController@getEmail']);
+
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');

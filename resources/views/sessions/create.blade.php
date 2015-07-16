@@ -21,6 +21,7 @@
 
 	<div class="form-group">
 		{!! Form::submit('Sign In', ['class' => 'btn btn-primary']) !!}
+		{!! link_to_route('passwordreset', ' Forgot your password?') !!}
 	</div>
 
 	{!! Form::close() !!}
