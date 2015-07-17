@@ -42,7 +42,7 @@
     overflow: hidden;
     background: #FDFCFC; }
     .status-post .status-post-submit .btn {
-      float: right;
+      float: left;
       background: #2eb1e4;
       color: white;
       text-transform: uppercase;
@@ -54,7 +54,8 @@
 .comments__create-form textarea {
   border: 1px solid #e3e3e3;
   border-top: none;
-  border-radius: 0; }
+  border-radius: 0;
+  margin-bottom: 0; }
 
 .comments {
   margin-bottom: 5em; }

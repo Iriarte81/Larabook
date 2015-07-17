@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Support\Facades\Auth;
+use App\Statuses\Comment;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -82,6 +83,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @return boolean
      *
      */
+
+    public function comments()
+    {
+        return $this->hasMany('App\Statuses\Comment');
+    }
 
     public function is($user) {
 

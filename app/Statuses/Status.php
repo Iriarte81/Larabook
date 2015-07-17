@@ -4,27 +4,35 @@ namespace App\Statuses;
 
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
+use App\Statuses\Comment;
 
 class Status extends Model
 {
-	use PresentableTrait;
+    use PresentableTrait;
 
-	protected $table = 'statuses';
-	protected $fillable = ['body'];
+    protected $table = 'statuses';
+    protected $fillable = ['body'];
 
-	/*
-		Path to the presenter for a status
+    /*
+        Path to the presenter for a status
 
-		@var string
-	 */
-	protected $presenter = "App\Statuses\StatusPresenter";
+        @var string
+     */
+    protected $presenter = "App\Statuses\StatusPresenter";
 
-	public function user() {
-		return $this->belongsTo('App\User');
-	}
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
-	public static function publish($body) {
-		return new static(compact('body'));
-	}
+    public static function publish($body)
+    {
+        return new static(compact('body'));
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Statuses\Comment');
+    }
 
 }
